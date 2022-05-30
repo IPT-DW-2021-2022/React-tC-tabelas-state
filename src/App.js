@@ -31,7 +31,16 @@ class App extends React.Component {
     ]
   }
 
+  removeAluno = (aluno) => {
+    // recuperar o acesso aos dados do state
+    const { alunos } = this.state
 
+    // retirar o 'aluno' ao array 'alunos'
+    // alunos=alunos-aluno
+    this.setState({
+      alunos: alunos.filter( (a, i) => { return i !== aluno } )
+    })
+  }
 
   render() {
     // atribuir à variábel interna 'alunos' o conteúdo do 'state' com o mesmo nome
@@ -40,7 +49,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <h1>Lista dos alunos</h1>
-        <Tabela dadosAlunosIN={alunos} />
+        <Tabela dadosAlunosIN={alunos} alunoOUT={this.removeAluno} />
       </div>
     )
   }
