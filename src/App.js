@@ -3,6 +3,7 @@
  */
 
 import React from "react";
+import Formulario from "./Formulario";
 import Tabela from "./Tabela";
 
 class App extends React.Component {
@@ -38,7 +39,7 @@ class App extends React.Component {
     // retirar o 'aluno' ao array 'alunos'
     // alunos=alunos-aluno
     this.setState({
-      alunos: alunos.filter( (a, i) => { return i !== aluno } )
+      alunos: alunos.filter((a, i) => { return i !== aluno })
     })
   }
 
@@ -48,7 +49,13 @@ class App extends React.Component {
 
     return (
       <div className="container">
-        <h1>Lista dos alunos</h1>
+        <h1>Alunos</h1>
+
+        <h4>Novo aluno</h4>
+        <Formulario />
+
+        <br /><br />
+        <h4>Lista dos alunos</h4>
         <Tabela dadosAlunosIN={alunos} alunoOUT={this.removeAluno} />
       </div>
     )
