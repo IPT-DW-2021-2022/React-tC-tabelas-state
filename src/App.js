@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+/**
+ * App.js
+ */
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+import Tabela from "./Tabela";
+
+class App extends React.Component {
+
+  // este tipo de dados permitem a sua edição
+  // ie, pode-se adicionar, ou retirar, elementos
+  // em 'real time' ao array
+  state = {
+    alunos: [
+      {
+        nome: "João",
+        apelido: "Sousa",
+      },
+      {
+        nome: "Ana",
+        apelido: "Pires",
+      },
+      {
+        nome: "Mário",
+        apelido: "Silva",
+      },
+      {
+        nome: "Luís",
+        apelido: "Sousa",
+      },
+    ]
+  }
+
+
+
+  render() {
+    // atribuir à variábel interna 'alunos' o conteúdo do 'state' com o mesmo nome
+    const { alunos } = this.state // <=>  const alunos = this.state.alunos
+
+    return (
+      <div className="container">
+        <h1>Lista dos alunos</h1>
+        <Tabela dadosAlunosIN={alunos} />
+      </div>
+    )
+  }
+
 }
 
 export default App;
