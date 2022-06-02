@@ -7,17 +7,29 @@
 import React from "react";
 
 class Formulario extends React.Component {
-
     novoAluno = {
         nome: "",
         apelido: "",
-    }
+    };
 
-    state = novoAluno
+    state = this.novoAluno;
 
+    /**
+     * handler para processar os dados inseridos nas 'textboxs'
+     * @param {*} evento : o valor escrito na textbox
+     */
     handlerAdicao = (evento) => {
         const { name, value } = evento.target
         this.setState({ [name]: value })
+    }
+
+    /**
+     * handler para entregar os dados recolhidos pelo formulário
+     * à componente que invocou o <Formulario />
+     */
+    submitForm = () => {
+        this.props.novoAlunoOUT(this.state);
+        this.setState(this.novoAluno);
     }
 
     render() {
@@ -41,9 +53,10 @@ class Formulario extends React.Component {
                         value={apelido}
                         onChange={this.handlerAdicao}
                     />
-                    <input type="submit"
+                    <input type="button"
                         className="btn btn-primary"
-                        value="Adicionar" />
+                        value="Adicionar"
+                        onClick={this.submitForm} />
                 </div>
             </form>
         )

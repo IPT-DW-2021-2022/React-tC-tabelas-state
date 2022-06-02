@@ -4,6 +4,10 @@
 
 import React, { Component } from "react";
 
+/**
+ * cria o cabeçalho da tabela
+ * @returns void
+ */
 function Cabecalho() {
     return (
         <thead>
@@ -16,6 +20,11 @@ function Cabecalho() {
     )
 }
 
+/**
+ * constroi o corpo da tabela
+ * @param {*} props : lista com os dados a serem disponibilizados na tabela
+ * @returns 
+ */
 const Corpo = (props) => {
     // iterar todos os elementos do JSON
     // e gerar as linhas da tabela
@@ -31,13 +40,14 @@ const Corpo = (props) => {
         )
     })
 
-
     return (
         <tbody> {rows} </tbody>
     )
 }
 
-
+/**
+ * componente Tabela
+ */
 class Tabela extends Component {
     render() {
         // ler os dados que são envidados
@@ -45,12 +55,11 @@ class Tabela extends Component {
         // const dadosAlunosIN=this.props.dadosAlunosIN
         const { dadosAlunosIN, alunoOUT } = this.props
 
-
         return (
             <table className="table table-striped">
                 <Cabecalho />
                 <Corpo dadosRecebidosAlunosIN={dadosAlunosIN}
-                       alunoARemover={alunoOUT} />
+                    alunoARemover={alunoOUT} />
             </table>
         )
     }
